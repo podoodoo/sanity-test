@@ -10,7 +10,18 @@ type Props = {
 
 const Home: NextPage<Props> = ({ posts }) => {
     const [projectPosts, setProjectPosts] = useState<Post[]>(posts)
-    return <div className="container">{projectPosts[0].title}</div>
+    return (
+        <div className="container flex flex-col">
+            {projectPosts.map((post, i) => (
+                <div
+                    key={projectPosts[i].slug.current}
+                    className="w-40 h-40 text-lg"
+                >
+                    {projectPosts[i].title}
+                </div>
+            ))}
+        </div>
+    )
 }
 
 export const getServerSideProps = async () => {
