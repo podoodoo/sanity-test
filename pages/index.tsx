@@ -5,12 +5,13 @@ import Image from "next/future/image"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { groq } from "next-sanity"
+import type { NextPage } from "next"
 
 type Props = {
-    posts: [Post]
+    posts?: [Post]
 }
 
-export default function Projects({ posts }: Props) {
+const Home: NextPage<Props> = ({ posts }) => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 object-cover">
             {posts.map((post, i) => (
@@ -56,3 +57,5 @@ export const getServerSideProps = async () => {
         }
     }
 }
+
+export default Home
